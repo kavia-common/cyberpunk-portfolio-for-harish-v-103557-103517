@@ -1,0 +1,169 @@
+/* Global baseline styles and layout utilities for the cyberpunk portfolio */
+:root {
+  --primary: #39FF14;
+  --accent: #00FFFF;
+  --text: #e6e6e6;
+  --muted: #a0a0a0;
+  --bg: #0b0b0f;
+  --elev-1: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.12);
+  --radius: 12px;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.brand-text .accent {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(57,255,20,0.6);
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-link {
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.nav-link.active, .nav-link:hover {
+  border-color: var(--border);
+  background: var(--elev-1);
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.socials a {
+  color: var(--text);
+  margin-left: 10px;
+}
+
+.section {
+  padding: 48px 0;
+}
+
+.section-title {
+  font-size: 28px;
+  margin: 0 0 6px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  background: var(--elev-1);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.card-desc {
+  color: var(--muted);
+}
+
+.card-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  background: transparent;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #0b0b0f;
+  border-color: transparent;
+}
+
+.btn-ghost {
+  background: transparent;
+}
+
+.btn-small {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.hero .title {
+  font-size: 32px;
+}
+
+.muted { color: var(--muted); }
+
+.theme-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+}
