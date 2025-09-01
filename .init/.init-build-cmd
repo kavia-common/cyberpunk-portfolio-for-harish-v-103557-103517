@@ -1,0 +1,4 @@
+{
+    "command": "npm install && npx tsc --noEmit && npm test -- --ci",
+    "working_directory": "/home/kavia/workspace/code-generation/cyberpunk-portfolio-for-harish-v-103557-103517/portfolio_frontend"
+}

@@ -1,0 +1,25 @@
+/* Global lightweight helpers; core theming is in App.css
+   Keep only minimal helpers that aren't theme definitions.
+*/
+html, body, #root { height: 100%; }
+
+.muted { color: var(--text-muted); }
+
+/* Lists and page helpers kept here */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list-item { border-bottom: 1px solid var(--border); }
+.list-link {
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  transition: color var(--t-base);
+}
+.list-link:hover { color: var(--primary); }
+.list-title { font-weight: 600; }
+.list-meta { color: var(--text-muted); font-size: 14px; }

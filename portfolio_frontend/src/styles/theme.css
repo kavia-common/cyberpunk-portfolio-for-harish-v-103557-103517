@@ -1,0 +1,12 @@
+/* Minimal theme hook file
+   Keep light/dark tokens aligned with App.css variables.
+   This remains for modularity and future theming extensions.
+*/
+:root {
+  --bg: var(--bg);
+  --text: var(--text);
+}
+
+[data-theme="light"] {
+  /* Variables are already overridden in App.css [data-theme="light"] */
+}

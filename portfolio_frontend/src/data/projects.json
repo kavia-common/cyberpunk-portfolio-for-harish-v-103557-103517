@@ -1,0 +1,16 @@
+[
+  {
+    "id": "p1",
+    "title": "Neon Sentinel",
+    "description": "Anomaly detection engine for network traffic with ML-driven alerts.",
+    "demo": "https://example.com/demo/neon-sentinel",
+    "github": "https://github.com/example/neon-sentinel"
+  },
+  {
+    "id": "p2",
+    "title": "CyberDeck",
+    "description": "Developer dashboard with cyberpunk UI and CLI integrations.",
+    "demo": "https://example.com/demo/cyberdeck",
+    "github": "https://github.com/example/cyberdeck"
+  }
+]

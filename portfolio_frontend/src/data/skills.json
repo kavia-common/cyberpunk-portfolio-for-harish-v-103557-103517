@@ -1,0 +1,7 @@
+[
+  { "id": "s1", "label": "React", "icon": "react", "level": "Advanced" },
+  { "id": "s2", "label": "JavaScript", "icon": "js", "level": "Advanced" },
+  { "id": "s3", "label": "Python", "icon": "python", "level": "Advanced" },
+  { "id": "s4", "label": "Security", "icon": "shield", "level": "Threat Modeling" },
+  { "id": "s5", "label": "LLM Safety", "icon": "shield", "level": "Prompt/Inference" }
+]

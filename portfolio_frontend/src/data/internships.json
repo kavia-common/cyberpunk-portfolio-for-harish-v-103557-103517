@@ -1,0 +1,16 @@
+[
+  {
+    "id": "i1",
+    "company": "Secura Labs",
+    "role": "Security Intern",
+    "period": "Jan 2024 — Apr 2024",
+    "summary": "Implemented threat modeling and automated vulnerability scans."
+  },
+  {
+    "id": "i2",
+    "company": "AI Forge",
+    "role": "AI Research Intern",
+    "period": "May 2024 — Aug 2024",
+    "summary": "Built LLM-based tools for secure code analysis."
+  }
+]
