@@ -26,5 +26,26 @@ export default function Icon({ name, size = 20 }) {
       <svg {...common}><path d="M3 12h6l3-6 3 6h6l-6 3 3 6-6-3-6 3 3-6-6-3z"/></svg>
     );
   }
+  // simple extra dev icons
+  if (name === 'react') {
+    return (
+      <svg {...common}><circle cx="12" cy="12" r="2"/><g fill="none" stroke="currentColor"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></g></svg>
+    );
+  }
+  if (name === 'js') {
+    return (
+      <svg {...common}><rect x="3" y="3" width="18" height="18" rx="2"/><path fill="var(--bg)" d="M9 8h2v8H7v-2h2zM15 16c1 0 2-.5 2-1.8 0-1.3-1-1.7-2.1-2.1-.8-.3-1.1-.5-1.1-.9 0-.3.3-.5.7-.5.5 0 .9.2 1.2.6l1.3-1.1c-.6-.8-1.5-1.2-2.6-1.2-1.5 0-2.6.9-2.6 2.2 0 1.3.8 1.9 2.1 2.4.9.3 1.1.6 1.1 1s-.4.6-.8.6c-.6 0-1.1-.2-1.5-.7l-1.4 1.1c.6.9 1.6 1.4 2.9 1.4z"/></svg>
+    );
+  }
+  if (name === 'python') {
+    return (
+      <svg {...common}><path d="M12 2c3 0 4 1 4 4v2H8c-2 0-4 2-4 4s2 4 4 4h4c3 0 4 1 4 4s-1 4-4 4-4-1-4-4v-2h8c2 0 4-2 4-4s-2-4-4-4h-4c-3 0-4-1-4-4s1-4 4-4z"/></svg>
+    );
+  }
+  if (name === 'shield') {
+    return (
+      <svg {...common}><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+    );
+  }
   return <span style={{ display: 'inline-block', width: size, height: size }} />;
 }
