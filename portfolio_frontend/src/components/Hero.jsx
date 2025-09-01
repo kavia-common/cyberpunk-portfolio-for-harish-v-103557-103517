@@ -1,4 +1,5 @@
 import React from 'react';
+import ResumeButton from './ResumeButton';
 
 /**
  * PUBLIC_INTERFACE
@@ -76,10 +77,11 @@ export default function Hero() {
           I build secure and intelligent systems with a hacker-inspired aesthetic — blending
           cybersecurity, AI, and software to ship impactful products.
         </p>
-        <div className="cta" style={{ display: 'flex', gap: 10, marginTop: 14 }}>
+        <div className="cta" style={{ display: 'flex', gap: 10, marginTop: 14, flexWrap: 'wrap' }}>
           <a className="btn btn-primary" href="#projects">View Projects</a>
           <a className="btn btn-ghost" href="#skills">Skills</a>
           <a className="btn btn-ghost" href="/contact">Contact</a>
+          <ResumeButton variant="ghost" label="Resume" />
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Icon from './Icon';
+import ResumeButton from './ResumeButton';
 
 /**
  * PUBLIC_INTERFACE
@@ -45,9 +46,9 @@ export default function Navbar() {
           <NavLink to="/" className={getNavClass} onClick={() => setOpen(false)}>Home</NavLink>
           <NavLink to="/blog" className={getNavClass} onClick={() => setOpen(false)}>Blog</NavLink>
           <NavLink to="/contact" className={getNavClass} onClick={() => setOpen(false)}>Contact</NavLink>
-          <a className="nav-link" href="/assets/resume/HarishV-Resume.pdf" onClick={() => setOpen(false)} download>
-            Resume
-          </a>
+          <span className="nav-link" style={{ padding: 0, border: 'none' }}>
+            <ResumeButton variant="ghost" label="Resume" />
+          </span>
         </nav>
       </div>
     </header>
