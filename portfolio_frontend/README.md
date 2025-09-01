@@ -27,6 +27,23 @@ Launches the test runner in interactive watch mode.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+## Blog Markdown
+
+This app renders blog posts from `src/content/blog/*.md` without extra libraries. We statically import raw files and use a minimal renderer.
+
+- Add a new post:
+  1) Create `src/content/blog/<your-slug>.md` with frontmatter:
+     ---
+     title: "Title"
+     date: "YYYY-MM-DD"
+     summary: "Optional short description"
+     ---
+     Your markdown content...
+  2) Add the slug to `src/data/blogIndex.json`.
+  3) Register the file in `src/utils/blogLoader.js` (import the .md with `?raw` and add to the `registry`).
+
+Note: `?raw` import is supported by the build configuration used in this template environment. If your environment doesn't support it, switch to `fetch`ing from `public/` or add a raw-loader.
+
 ## Customization
 
 ### Colors
