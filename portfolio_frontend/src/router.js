@@ -27,7 +27,8 @@ export default function AppRouter() {
     <BrowserRouter>
       <div className="layout layout-shell">
         <Navbar />
-        <main className="content" role="main" aria-live="polite">
+        {/* content-grid allows easy sidebars later while remaining single-column by default */}
+        <main className="content content-grid" role="main" aria-live="polite" aria-label="Main content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
