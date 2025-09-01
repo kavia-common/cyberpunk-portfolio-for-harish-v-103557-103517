@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from './Icon';
+import SocialLinks from './SocialLinks';
 
 /**
  * PUBLIC_INTERFACE
@@ -10,16 +10,14 @@ export default function Footer() {
     <footer className="footer" role="contentinfo">
       <div className="container footer-inner">
         <p className="muted">© {new Date().getFullYear()} Harish V — Built with React</p>
-        <div className="socials">
-          <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <Icon name="github" />
-          </a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <Icon name="linkedin" />
-          </a>
-          <a href="mailto:someone@example.com" aria-label="Email">
-            <Icon name="mail" />
-          </a>
+        <div className="socials" aria-label="Footer social links">
+          <SocialLinks
+            githubUrl="https://github.com/"
+            linkedinUrl="https://www.linkedin.com/"
+            email="someone@example.com"
+            variant="row"
+            size={18}
+          />
         </div>
       </div>
     </footer>

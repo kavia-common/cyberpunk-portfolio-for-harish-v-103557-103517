@@ -183,6 +183,13 @@
    color: var(--text);
    margin-left: 10px;
  }
+ .social-links .btn {
+   padding: 8px 10px;
+ }
+ .social-links .btn:hover {
+   border-color: color-mix(in oklab, var(--accent) 38%, var(--border));
+   box-shadow: var(--glow-accent);
+ }
 
  /* Container utility */
  .container {
@@ -281,6 +288,30 @@
  }
  .btn-ghost { background: transparent; }
  .btn-small { padding: 6px 10px; font-size: 14px; }
+
+ /* Forms */
+ .input, .textarea, select {
+   width: 100%;
+   box-sizing: border-box;
+   background: var(--bg-elev-1);
+   border: 1px solid var(--border);
+   color: var(--text);
+   border-radius: 10px;
+   padding: 10px 12px;
+   outline: none;
+   transition: border-color var(--t-base), box-shadow var(--t-base), background var(--t-base);
+   font-family: inherit;
+   font-size: 14px;
+ }
+ .textarea { resize: vertical; }
+ .input::placeholder, .textarea::placeholder {
+   color: color-mix(in oklab, var(--text-muted) 80%, transparent);
+ }
+ .input:focus, .textarea:focus, select:focus {
+   border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+   box-shadow: var(--glow-accent);
+   background: color-mix(in oklab, var(--bg) 94%, transparent);
+ }
 
  /* Hero */
  .hero .title {
