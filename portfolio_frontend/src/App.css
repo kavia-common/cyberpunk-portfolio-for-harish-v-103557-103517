@@ -1,104 +1,355 @@
-/* CSS Variables for Theme Management */
+/* Cyberpunk Theme System and Utilities
+   - Centralized CSS variables for light/dark themes
+   - Neon/glow utilities
+   - Scanlines and accent backgrounds
+   - Shared component styles (buttons, cards, layout shells)
+
+   This file intentionally consolidates theme tokens and utility classes so
+   all components/pages can reference consistent variables via data-theme on html.
+*/
+
+/* Base palette and scales */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  /* Brand core */
+  --primary: #39FF14; /* Neon Green */
+  --accent: #00FFFF;  /* Cyan */
+  --warning: #ff4d4d;
+  --magenta: #ff00ff;
+
+  /* Surfaces and text (dark default) */
+  --bg: #0b0b0f;
+  --bg-elev-1: rgba(255,255,255,0.06);
+  --bg-elev-2: rgba(255,255,255,0.09);
+  --text: #e6e6e6;
+  --text-muted: #a0a0a0;
+
+  /* Borders and radii */
+  --border: rgba(255,255,255,0.12);
+  --radius: 12px;
+
+  /* Glows */
+  --glow-primary: 0 0 8px rgba(57,255,20,0.55), 0 0 18px rgba(57,255,20,0.35);
+  --glow-accent: 0 0 8px rgba(0,255,255,0.55), 0 0 18px rgba(0,255,255,0.35);
+  --glow-magenta: 0 0 10px rgba(255,0,255,0.45), 0 0 20px rgba(255,0,255,0.25);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 14px rgba(0,0,0,0.3);
+  --shadow-md: 0 10px 24px rgba(0,0,0,0.35);
+
+  /* Transitions */
+  --t-fast: 120ms ease;
+  --t-base: 220ms ease;
+
+  /* Typography */
+  --font-body: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Scanline overlay strength */
+  --scanline-alpha: 0.08;
+
+  /* App shells */
+  --app-min-h: 100dvh;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+/* Light theme overrides */
+[data-theme="light"] {
+  --bg: #f7f7f9;
+  --bg-elev-1: rgba(0,0,0,0.06);
+  --bg-elev-2: rgba(0,0,0,0.09);
+  --text: #1b1b1f;
+  --text-muted: #5a5a62;
+  --border: rgba(0,0,0,0.12);
+  --scanline-alpha: 0.04;
 }
 
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* Body and root setup */
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+}
+.app-shell {
+  min-height: var(--app-min-h);
+  background: var(--bg);
+  color: var(--text);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+/* Layout shells */
+.layout-shell {
   display: flex;
   flex-direction: column;
+  min-height: var(--app-min-h);
+}
+.content {
+  flex: 1 1 auto;
+}
+
+/* Navbar and Footer migrate to theme tokens */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
+}
+.brand {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+}
+.brand-text .accent {
+  color: var(--primary);
+  text-shadow: var(--glow-primary);
+}
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+.nav-link {
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color var(--t-base), background var(--t-base), color var(--t-base);
+}
+.nav-link.active, .nav-link:hover {
+  border-color: var(--border);
+  background: var(--bg-elev-1);
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.socials a {
+  color: var(--text);
+  margin-left: 10px;
+}
+
+/* Container utility */
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Sections */
+.section { padding: 48px 0; }
+.section-title {
+  font-size: 28px;
+  margin: 0 0 6px;
+  text-shadow: 0 0 1px rgba(0,0,0,0.2);
+}
+.section-subtitle {
+  color: var(--text-muted);
+  margin: 0 0 18px;
+}
+
+/* Grid and Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card {
+  border: 1px solid var(--border);
+  background: var(--bg-elev-1);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-base);
+  position: relative;
+  overflow: hidden;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 60%, rgba(255,255,255,0.06) 70%, transparent 80%);
+  transform: translateX(-100%);
+  transition: transform var(--t-base);
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in oklab, var(--accent) 38%, var(--border));
+}
+.card:hover::after {
+  transform: translateX(100%);
+}
+.card-title { margin: 0 0 8px; font-size: 18px; }
+.card-desc { color: var(--text-muted); }
+.card-actions { margin-top: 12px; display: flex; gap: 8px; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  background: transparent;
+  transition: box-shadow var(--t-fast), transform var(--t-fast), color var(--t-fast), background var(--t-fast), border-color var(--t-fast);
+  will-change: transform;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-primary {
+  background: var(--primary);
+  color: #0b0b0f;
+  border-color: transparent;
+  box-shadow: var(--glow-primary);
+}
+.btn-ghost { background: transparent; }
+.btn-small { padding: 6px 10px; font-size: 14px; }
+
+/* Hero */
+.hero .title {
+  font-size: 32px;
+}
+
+/* Text helpers */
+.muted { color: var(--text-muted); }
+.link { color: var(--accent); text-decoration: none; }
+.link:hover { text-shadow: var(--glow-accent); }
+
+/* Theme Toggle - floating cyberpunk pill */
+.theme-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  border: 1px solid color-mix(in oklab, var(--accent) 60%, var(--border));
+  background: linear-gradient(180deg, var(--bg-elev-1), var(--bg-elev-2));
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-family: var(--font-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: var(--glow-accent);
+}
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+/* Neon/Glow utilities */
+.neon { text-shadow: var(--glow-primary); }
+.neon-accent { text-shadow: var(--glow-accent); color: var(--accent); }
+.neon-magenta { text-shadow: var(--glow-magenta); color: var(--magenta); }
+
+/* Accent backgrounds */
+.accent-bg {
+  background: radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 60%),
+              radial-gradient(1600px 800px at 110% 10%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 60%);
+  filter: saturate(110%);
+}
+.accent-border {
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+}
+
+/* Scanlines and CRT-like subtle flicker */
+.scanlines {
+  position: relative;
+  isolation: isolate;
+}
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, var(--scanline-alpha)) 0px,
+    rgba(0, 0, 0, var(--scanline-alpha)) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: -1;
+}
+
+/* Glitch effect utility (lightweight) */
+.glitch {
   position: relative;
 }
-
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
+  left: 0; top: 0;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}
+.glitch::before {
+  color: var(--accent);
+  transform: translate(2px, 0);
+  text-shadow: var(--glow-accent);
+}
+.glitch::after {
+  color: var(--magenta);
+  transform: translate(-2px, 0);
+  text-shadow: var(--glow-magenta);
+}
+
+/* Modal basics (kept minimal) */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: grid; place-items: center;
+  z-index: 20;
+}
+.modal {
+  width: min(720px, 92vw);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.modal-content { padding: 16px; }
+.icon-button {
+  border: 1px solid var(--border);
+  background: var(--bg-elev-2);
+  color: var(--text);
   border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+  width: 32px; height: 32px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
-}
-
-.theme-toggle:active {
-  transform: translateY(0);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive design for mobile */
+/* Responsive helpers */
 @media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
-  }
+  .theme-toggle { right: 12px; bottom: 12px; padding: 8px 14px; }
+  .hero .title { font-size: 26px; }
 }
